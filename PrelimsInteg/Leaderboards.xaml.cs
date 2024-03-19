@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -51,10 +52,6 @@ namespace PrelimsInteg
             ReadFile(path1, _EasyEntry, 1);
             ReadFile(path2, _MediumEntry, 2);
             ReadFile(path3, _HardEntry, 3);
-
-            //SortLeaderboards(_Leaderboards_Easy);
-            //SortLeaderboards(_Leaderboards_Medium);
-            //SortLeaderboards(_Leaderboards_Hard);
         }
 
         private void ReadFile(string path, List<LeaderboardEntry> leaderboards, int difficulty)
@@ -161,56 +158,53 @@ namespace PrelimsInteg
 
         private void SortLeaderboardScore(List<LeaderboardEntry> leaderboards)
         {
-            leaderboards.Sort(sortScores);
+            List<LeaderboardEntry> sortedByScore = leaderboards.OrderBy(lb => lb.Score).ToList();
         }
 
         private void SortLeaderboardTime(List<LeaderboardEntry> leaderboards)
         {
-            leaderboards.Sort(sortTime);
-        }
-
-        private int sortTime(LeaderboardEntry ent1, LeaderboardEntry ent2)
-        {
-            return ent2.Time.CompareTo(ent1.Time);
-        }
-        private int sortScores(LeaderboardEntry ent1, LeaderboardEntry ent2)
-        {
-            return ent2.Score.CompareTo(ent1.Score);
+            List<LeaderboardEntry> sortedByScore = leaderboards.OrderBy(lb => lb.Time).ToList();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {   
+        {
             if (lbDiff.Content.ToString() == "Easy")
             {
-                if (cbSort.SelectedItem.ToString() == "Score")
+                if (cbSort.SelectedIndex == 0)
                 {
                     SortLeaderboardScore(_EasyEntry);
+                    lvEasy.Items.Refresh();
                 }
                 else
                 {
                     SortLeaderboardTime(_EasyEntry);
+                    lvEasy.Items.Refresh();
                 }
             }
             else if (lbDiff.Content.ToString() == "Medium")
             {
-                if (cbSort.SelectedItem.ToString() == "Score")
+                if (cbSort.SelectedIndex == 0)
                 {
                     SortLeaderboardScore(_MediumEntry);
+                    lvMedium.Items.Refresh();
                 }
                 else
                 {
                     SortLeaderboardTime(_MediumEntry);
+                    lvMedium.Items.Refresh();
                 }
             }
             else if (lbDiff.Content.ToString() == "Hard")
             {
-                if (cbSort.SelectedItem.ToString() == "Score")
+                if (cbSort.SelectedIndex == 0)
                 {
                     SortLeaderboardScore(_HardEntry);
+                    lvHard.Items.Refresh();
                 }
                 else
                 {
                     SortLeaderboardTime(_HardEntry);
+                    lvHard.Items.Refresh();
                 }
             }
         }
