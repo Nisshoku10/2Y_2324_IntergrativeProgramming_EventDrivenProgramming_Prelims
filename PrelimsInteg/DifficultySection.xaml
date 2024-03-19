@@ -1,0 +1,83 @@
+﻿<Window x:Class="PrelimsInteg.DifficultySection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrelimsInteg"
+        mc:Ignorable="d"
+        Title="DifficultySection" Height="550" Width="550"
+        ResizeMode="NoResize"
+        FontFamily="Consolas"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Grid>
+        <Image Source="Assets\Background.png" Stretch="UniformToFill"/>
+        <Label Content="Nickname:" 
+               FontSize="30" FontWeight="Bold"
+               Foreground="Black" Background="White"
+               Width="200" Height="70"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               Margin="0, 50, 0, 0"
+               BorderBrush="Black" BorderThickness="5"/>
+        <TextBox x:Name="tbPlayerName" Height="50" Width="200"
+                 VerticalContentAlignment="Center"
+                 HorizontalContentAlignment="Center"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Center"
+                 BorderBrush="Black" BorderThickness="5"
+                 FontSize="20"
+                 Margin="0, 160, 0, 0" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Difficulty" 
+               FontSize="30" FontWeight="Bold"
+               Foreground="Black" Background="White"
+               Width="200" Height="70"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               Margin="0, 30, 0, 0"
+               BorderBrush="Black" BorderThickness="5"/>
+        <Label x:Name="lbWarning" Content="Nickname must be between 0 and 11 characters only!"
+               Foreground="DarkRed" Background="White"
+               Height="26" Width="350"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               FontWeight="Bold"
+               BorderBrush="Black" BorderThickness="1"
+               Margin="0, 0, 0, 100"
+               Visibility="Hidden"/>
+        <Label x:Name="lbNoName" Content="Enter something!"
+               Foreground="DarkRed" Background="White"
+               Height="26" Width="150"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               FontWeight="Bold"
+               BorderBrush="Black" BorderThickness="1"
+               Margin="0, 0, 0, 100"
+               Visibility="Hidden"/>
+        <StackPanel VerticalAlignment="Bottom"
+                    Margin="0, 0, 0, 60">
+            <Button x:Name="btnEasy" Content="Easy"
+                    Width="100"
+                    FontSize="20"
+                    Margin="0, 0, 0, 20"
+                    IsEnabled="False"
+                    BorderBrush="Black" BorderThickness="2" Click="btnEasy_Click"/>
+            <Button x:Name="btnMedium" Content="Medium"
+                    Width="100"
+                    FontSize="20"
+                    Margin="0, 0, 0, 20"
+                    IsEnabled="False"
+                    BorderBrush="Black" BorderThickness="2" Click="btnMedium_Click"/>
+            <Button x:Name="btnHard" Content="Hard"
+                    Width="100"
+                    FontSize="20"
+                    Margin="0, 0, 0, 0"
+                    IsEnabled="False"
+                    BorderBrush="Black" BorderThickness="2" Click="btnHard_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

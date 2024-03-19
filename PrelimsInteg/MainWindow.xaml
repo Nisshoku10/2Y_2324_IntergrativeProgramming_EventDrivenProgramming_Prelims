@@ -1,0 +1,200 @@
+﻿<Window x:Class="PrelimsInteg.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrelimsInteg"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="550"
+        ResizeMode="NoResize"
+        FontFamily="Consolas"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Menu Height = "20" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="White">
+                <MenuItem Header="Main Menu" Background="Transparent" 
+                      BorderBrush="White" BorderThickness="2, 2, 1, 2" 
+                      FontSize="16" FontFamily="Consolas"
+                      Click="MainMenu_Click" />
+                <MenuItem Header="Restart Game" Background="Transparent" 
+                      BorderBrush="White" BorderThickness="1, 2, 1, 2" 
+                      FontSize="16" Click="Restart_Click" FontFamily="Consolas"/>
+                <MenuItem Header="Exit Game" Background="Transparent" 
+                      BorderBrush="White" BorderThickness="1, 2, 2, 2" 
+                      FontSize="16" FontFamily="Consolas"
+                      Click="Exit_Click" />
+
+            </Menu>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Image Source="Assets\TitleBackground2.png" Stretch="UniformToFill"/>
+            <StackPanel Orientation="Vertical">
+                <Label Content="Convert this number:" FontSize="20" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Margin="0, 40, 0, 10"
+                   Background="White" BorderBrush="Black" BorderThickness="2"/>
+                <TextBox x:Name="tbConvNum" Text="1" IsReadOnly="True" 
+                     Height="50" Width="300" 
+                     BorderThickness="5"
+                     Margin="0, 10, 0, 20"
+                     FontSize="30"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"/>
+                <StackPanel Orientation="Vertical" >
+                    <Label x:Name="lbTimer" Content="90" FontSize="30" HorizontalContentAlignment="Center"
+                       BorderThickness="5" BorderBrush="White"
+                       Foreground="White"
+                       Width="60" Background="Black"
+                       Margin="0, 0, 0, 10"/>
+                    <Label Content="Remaining time" FontSize="15" HorizontalContentAlignment="Center"
+                       Width="135" Background="White" BorderBrush="Black" BorderThickness="2"/>
+                </StackPanel>
+            </StackPanel>
+            <Label Content="Score:" FontSize="20" Margin="0, 0, 0, 0"
+               VerticalAlignment="Top" HorizontalAlignment="Left"
+               BorderThickness="2" Foreground="White" Background="Black"
+               Height="40"/>
+            <Label x:Name="lbScore" Content="0" FontSize="20" 
+               Foreground="White" Background="Black"
+               Height="40" Width="auto"
+               VerticalAlignment="Top" HorizontalAlignment="Left"
+               BorderThickness="2" Margin="70, 0, 0, 0"/>
+            <Label Content="Round:" FontSize="20"
+               Height="40" Width="auto"
+               VerticalAlignment="Top" HorizontalAlignment="Right"
+               BorderThickness="2" BorderBrush="Black"
+               Background="Black" Foreground="White"
+               Margin="0, 0, 20, 0"/>
+            <Label x:Name="lbRoundCount" Content="0"
+               Foreground="White" Background="Black"
+               Height="40" Width="auto"
+               HorizontalAlignment="Right" VerticalAlignment="Top"
+               FontSize="20"
+               BorderBrush="Black" BorderThickness="2"
+               Margin="0, 0, 5, 0"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Image Source="Assets\Background.png" Stretch="UniformToFill"/>
+            <StackPanel Orientation="Vertical" Background="Transparent" Width="550">
+                <TextBox Text="Your answer:" FontSize="20" 
+                     VerticalAlignment="Center" HorizontalAlignment="Center"
+                     Margin="0, 20, 0, 20"
+                     IsReadOnly="True"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBox x:Name="tbBin128" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                         FontSize="25" Text="0"
+                         IsReadOnly="True"/>
+                    <TextBox x:Name="tbBin64" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                         FontSize="25" Text="0"
+                         IsReadOnly="True"/>
+                    <TextBox x:Name="tbBin32" Height="45" Width="45" Margin="10, 0, 10, 0" 
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                         FontSize="25" Text="0"
+                         IsReadOnly="True"/>
+                    <TextBox x:Name="tbBin16" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center"
+                         FontSize="25" Text="0"
+                         IsReadOnly="True"/>
+                    <TextBox x:Name="tbBin8" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center" 
+                         FontSize="25" Text="0"
+                         IsReadOnly="True"/>
+                    <TextBox x:Name="tbBin4" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                         FontSize="25" Text="0"
+                         IsReadOnly="True"/>
+                    <TextBox x:Name="tbBin2" Height="45" Width="45" Margin="10, 0, 10, 0" 
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                         FontSize="25" Text="0"
+                         IsReadOnly="True"/>
+                    <TextBox x:Name="tbBin1" Height="45" Width="45" Margin="10, 0, 20, 0"
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                         FontSize="25" Text="0"
+                         IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label Content="128" FontSize="20" Margin="20, 10, 0, 10"
+                       Width="45" 
+                       Background="#dddddd"
+                       HorizontalContentAlignment="Center"
+                       BorderThickness="1" BorderBrush="Black"/>
+                    <Label Content="64" FontSize="20" Margin="20, 10, 0, 10"
+                       Width="45" 
+                       Background="#dddddd"
+                       HorizontalContentAlignment="Center"
+                       BorderThickness="1" BorderBrush="Black"/>
+                    <Label Content="32" FontSize="20" Margin="20, 10, 0, 10"
+                       Width="45" 
+                       Background="#dddddd"
+                       HorizontalContentAlignment="Center"
+                       BorderThickness="1" BorderBrush="Black"/>
+                    <Label Content="16" FontSize="20" Margin="20, 10, 0, 10"
+                       Width="45" 
+                       Background="#dddddd"
+                       HorizontalContentAlignment="Center"
+                       BorderThickness="1" BorderBrush="Black"/>
+                    <Label Content="8" FontSize="20" Margin="20, 10, 0, 10"
+                       Width="45" 
+                       Background="#dddddd"
+                       HorizontalContentAlignment="Center"
+                       BorderThickness="1" BorderBrush="Black"/>
+                    <Label Content="4" FontSize="20" Margin="20, 10, 0, 10"
+                       Width="45" 
+                       Background="#dddddd"
+                       HorizontalContentAlignment="Center"
+                       BorderThickness="1" BorderBrush="Black"/>
+                    <Label Content="2" FontSize="20" Margin="20, 10, 0, 10"
+                       Width="45" 
+                       Background="#dddddd"
+                       HorizontalContentAlignment="Center"
+                       BorderThickness="1" BorderBrush="Black"/>
+                    <Label Content="1" FontSize="20" Margin="20, 10, 0, 10"
+                       Width="45" 
+                       Background="#dddddd"
+                       HorizontalContentAlignment="Center"
+                       BorderThickness="1" BorderBrush="Black"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btn128" Height="20" Width="20" Background="Red"
+                        Margin="32, 0, 0 ,0" Click="btn128_Click"
+                        BorderBrush="Black" BorderThickness="2"/>
+                    <Button x:Name="btn64" Height="20" Width="20" Background="Red"
+                        Margin="45, 0, 0 ,0" Click="btn64_Click"
+                        BorderBrush="Black" BorderThickness="2"/>
+                    <Button x:Name="btn32" Height="20" Width="20" Background="red"
+                        Margin="45, 0, 0 ,0" Click="btn32_Click"                           
+                        BorderBrush="Black" BorderThickness="2"/>
+                    <Button x:Name="btn16" Height="20" Width="20" Background="Red"
+                        Margin="45, 0, 0 ,0" Click="btn16_Click"
+                        BorderBrush="Black" BorderThickness="2"/>
+                    <Button x:Name="btn8" Height="20" Width="20" Background="Red"
+                        Margin="45, 0, 0 ,0" Click="btn8_Click"
+                        BorderBrush="Black" BorderThickness="2"/>
+                    <Button x:Name="btn4" Height="20" Width="20" Background="Red"
+                        Margin="45, 0, 0 ,0" Click="btn4_Click"
+                        BorderBrush="Black" BorderThickness="2"/>
+                    <Button x:Name="btn2" Height="20" Width="20" Background="Red"
+                        Margin="45, 0, 0 ,0" Click="btn2_Click"
+                        BorderBrush="Black" BorderThickness="2"/>
+                    <Button x:Name="btn1" Height="20" Width="20" Background="red"
+                        Margin="45, 0, 0 ,0" Click="btn1_Click"
+                        BorderBrush="Black" BorderThickness="2"/>
+                </StackPanel>
+                <Button x:Name="btnSubmit" Content="Submit" Width="100" Height="30"
+                    FontSize="20" FontWeight="Bold" 
+                    Background="LightGray" BorderThickness="2" BorderBrush="Black"
+                    Margin="0, 20, 0, 0" Click="btnSubmit_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
