@@ -32,6 +32,7 @@ namespace PrelimsInteg
             lvMedium.Visibility = Visibility.Hidden;
             lvHard.Visibility = Visibility.Hidden;
 
+            
             cbSort.Items.Add("Score");
             cbSort.Items.Add("Time");
         }
@@ -77,7 +78,7 @@ namespace PrelimsInteg
                 }
             }
 
-            SortLeaderboardScore(leaderboards);
+            leaderboards = SortLeaderboardScore(leaderboards);
 
             switch(difficulty)
             {
@@ -102,21 +103,22 @@ namespace PrelimsInteg
         }
         private void btnLeft_Click(object sender, RoutedEventArgs e)
         {
-            if (lbDiff.Content == "Easy")
+            if (lbDiff.Content.ToString() == "Easy")
             {
                 lbDiff.Content = "Hard";
                 lvEasy.Visibility = Visibility.Hidden;
                 lvMedium.Visibility = Visibility.Hidden;
                 lvHard.Visibility = Visibility.Visible;
+                
             }
-            else if (lbDiff.Content == "Hard")
+            else if (lbDiff.Content.ToString() == "Hard")
             {
                 lbDiff.Content = "Medium";
                 lvEasy.Visibility = Visibility.Hidden;
                 lvMedium.Visibility = Visibility.Visible;
                 lvHard.Visibility = Visibility.Hidden;
             }
-            else if (lbDiff.Content == "Medium")
+            else if (lbDiff.Content.ToString() == "Medium")
             {
                 lbDiff.Content = "Easy";
                 lvEasy.Visibility = Visibility.Visible;
@@ -127,26 +129,56 @@ namespace PrelimsInteg
 
         private void btnRight_Click(object sender, RoutedEventArgs e)
         {
-            if (lbDiff.Content == "Easy")
+            if (lbDiff.Content.ToString() == "Easy")
             {
                 lbDiff.Content = "Medium";
                 lvEasy.Visibility = Visibility.Hidden;
                 lvMedium.Visibility = Visibility.Visible;
                 lvHard.Visibility = Visibility.Hidden;
+                if (cbSort.SelectedItem.ToString() == "Score")
+                {
+                    _EasyEntry = SortLeaderboardScore(_EasyEntry);
+                    lvEasy.ItemsSource = _EasyEntry;
+                }
+                else
+                {
+                    _EasyEntry = SortLeaderboardTime(_EasyEntry);
+                    lvEasy.ItemsSource = _EasyEntry;
+                }
             }
-            else if (lbDiff.Content == "Medium")
+            else if (lbDiff.Content.ToString() == "Medium")
             {
                 lbDiff.Content = "Hard";
                 lvEasy.Visibility = Visibility.Hidden;
                 lvMedium.Visibility = Visibility.Hidden;
                 lvHard.Visibility = Visibility.Visible;
+                if (cbSort.SelectedItem.ToString() == "Score")
+                {
+                    _MediumEntry = SortLeaderboardScore(_MediumEntry);
+                    lvMedium.ItemsSource = _MediumEntry;
+                }
+                else
+                {
+                    _MediumEntry = SortLeaderboardTime(_MediumEntry);
+                    lvMedium.ItemsSource = _MediumEntry;
+                }
             }
-            else if (lbDiff.Content == "Hard")
+            else if (lbDiff.Content.ToString() == "Hard")
             {
                 lbDiff.Content = "Easy";
                 lvEasy.Visibility = Visibility.Visible;
                 lvMedium.Visibility = Visibility.Hidden;
                 lvHard.Visibility = Visibility.Hidden;
+                if (cbSort.SelectedItem.ToString() == "Score")
+                {
+                    _HardEntry = SortLeaderboardScore(_HardEntry);
+                    lvHard.ItemsSource = _HardEntry;
+                }
+                else
+                {
+                    _HardEntry = SortLeaderboardTime(_HardEntry);
+                    lvHard.ItemsSource = _HardEntry;
+                }
             }
         } 
         #endregion
@@ -156,53 +188,59 @@ namespace PrelimsInteg
             //WriteLeaderboards();
         }
 
-        private void SortLeaderboardScore(List<LeaderboardEntry> leaderboards)
+        #region Combo Box Sort By 
+        private List<LeaderboardEntry> SortLeaderboardScore(List<LeaderboardEntry> templeaderboards)
         {
-            List<LeaderboardEntry> sortedByScore = leaderboards.OrderBy(lb => lb.Score).ToList();
+            return templeaderboards.OrderByDescending(lb => lb.Score).ToList();
         }
 
-        private void SortLeaderboardTime(List<LeaderboardEntry> leaderboards)
+        private List<LeaderboardEntry> SortLeaderboardTime(List<LeaderboardEntry> templeaderboards)
         {
-            List<LeaderboardEntry> sortedByScore = leaderboards.OrderBy(lb => lb.Time).ToList();
-        }
+            return templeaderboards.OrderByDescending(lb => lb.Time).ToList();
+        } 
+        #endregion
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            lbCbInst.Visibility = Visibility.Hidden;
             if (lbDiff.Content.ToString() == "Easy")
             {
-                if (cbSort.SelectedIndex == 0)
+                if (cbSort.SelectedItem.ToString() == "Score")
                 {
-                    SortLeaderboardScore(_EasyEntry);
+                    _EasyEntry = SortLeaderboardScore(_EasyEntry);
+                    lvEasy.ItemsSource = _EasyEntry;
                 }
-                else if (cbSort.SelectedIndex == 1)
+                else
                 {
-                    SortLeaderboardTime(_EasyEntry);
+                    _EasyEntry = SortLeaderboardTime(_EasyEntry);
+                    lvEasy.ItemsSource = _EasyEntry;
                 }
-                lvEasy.ItemsSource = _EasyEntry;
             }
             else if (lbDiff.Content.ToString() == "Medium")
             {
-                if (cbSort.SelectedIndex == 0)
+                if (cbSort.SelectedItem.ToString() == "Score")
                 {
-                    SortLeaderboardScore(_MediumEntry);
+                    _MediumEntry = SortLeaderboardScore(_MediumEntry);
+                    lvMedium.ItemsSource = _MediumEntry;
                 }
-                else if(cbSort.SelectedIndex == 1)
+                else
                 {
-                    SortLeaderboardTime(_MediumEntry);
+                    _MediumEntry = SortLeaderboardTime(_MediumEntry);
+                    lvMedium.ItemsSource = _MediumEntry;
                 }
-                lvEasy.ItemsSource = _MediumEntry;
             }
             else if (lbDiff.Content.ToString() == "Hard")
             {
-                if (cbSort.SelectedIndex == 0)
+                if (cbSort.SelectedItem.ToString() == "Score")
                 {
-                    SortLeaderboardScore(_HardEntry);
+                    _HardEntry = SortLeaderboardScore(_HardEntry);
+                    lvHard.ItemsSource = _HardEntry;
                 }
-                else if (cbSort.SelectedIndex == 1)
+                else
                 {
-                    SortLeaderboardTime(_HardEntry);
+                    _HardEntry = SortLeaderboardTime(_HardEntry);
+                    lvHard.ItemsSource = _HardEntry;
                 }
-                lvEasy.ItemsSource = _HardEntry;
             }
         }
     }

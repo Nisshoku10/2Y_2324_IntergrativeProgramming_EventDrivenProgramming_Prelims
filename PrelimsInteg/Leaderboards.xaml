@@ -19,6 +19,14 @@
                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged"
                   Margin="0, 120, 0, 0"
                   FontSize="15"/>
+        <Label x:Name="lbCbInst" Content="Sort By:"
+               FontSize="15" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               Margin="0, 118, 0, 0"
+               Visibility="Visible"/>
         <Label x:Name="lbDiff" Content="Easy" 
                FontSize="40" FontWeight="Bold"
                Foreground="Black" Background="White"
