@@ -12,6 +12,7 @@
         WindowStyle="None">
     <Grid>
         <Image Source="Assets\Background.png" Stretch="UniformToFill"/>
+        <Border BorderBrush="Black" BorderThickness="10"/>
         <Label Content="Nickname:" 
                FontSize="30" FontWeight="Bold"
                Foreground="Black" Background="White"

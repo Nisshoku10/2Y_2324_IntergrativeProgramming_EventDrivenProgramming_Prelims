@@ -10,30 +10,31 @@ namespace PrelimsInteg
     /// </summary>
     public partial class MainWindow : Window
     {
-       private int _score = 0;
-       private int _cummulTime = 0;
-       private int _difficulty = 1;
+        private string _name = "";
+        private int _score = 0;
+        private int _finalTime = 0;
+        private int _difficulty = 1;
 
         DispatcherTimer _dt = null;
         Random _rnd = new Random();
         private int _round = 1;
-        private double _currentTime = 0;
-        private string _name = "";
+        private double _elapsedTime = 0;
+        private double _gameTime = 0;
         private int _points = 0;
 
         public MainWindow(int difficulty, string name, double time)
         {
             _name = name;
             _difficulty = difficulty;
-            _currentTime = time;
+            _gameTime = time;
             InitializeComponent();
             _dt = new DispatcherTimer();
             _dt.Tick += _dt_Tick;
             _dt.Interval = GetDifficultyInterval();
             _dt.Start();
-            tbConvNum.Text = _rnd.Next(0, GetNumberRange()).ToString();
+            tbConvNum.Text = _rnd.Next(1, GetNumberRange()).ToString();
             lbRoundCount.Content = _round;
-            lbTimer.Content = _currentTime;
+            lbTimer.Content = _gameTime;
             _points = PointSystem();
         }
 
@@ -150,9 +151,9 @@ namespace PrelimsInteg
             }
         }
         #endregion
-        #region DispatcherTimerEvents
         private void _dt_Tick(object sender, EventArgs e)
         {
+            _elapsedTime++;
             int time = int.Parse(lbTimer.Content.ToString());
 
             if (time != 0)
@@ -163,11 +164,12 @@ namespace PrelimsInteg
             else
             {
                 _dt.Stop();
-                MessageBox.Show("Game Over! Your total game time is " + _cummulTime + ".");
+                _finalTime = (int)_elapsedTime;
+                MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total.");
                 LeaderboardEntry lbEnt = new LeaderboardEntry();
                 lbEnt.NickName = _name;
                 lbEnt.Score = _score;
-                lbEnt.Time = _cummulTime;
+                lbEnt.Time = _finalTime;
                 lbEnt.Difficulty = _difficulty;
                 Leaderboards lb = new Leaderboards();
                 lb.Show();
@@ -177,19 +179,18 @@ namespace PrelimsInteg
             if (_round == 10)
             {
                 _dt.Stop();
-                MessageBox.Show("Game Over! You have completed 10 rounds. Your total game time is " + _cummulTime + ".");
+                _finalTime = (int)_elapsedTime;
+                MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total.");
                 LeaderboardEntry lbEnt = new LeaderboardEntry();
                 lbEnt.NickName = _name;
                 lbEnt.Score = _score; 
-                lbEnt.Time = _cummulTime;
+                lbEnt.Time = _finalTime;
                 lbEnt.Difficulty = _difficulty;
                 Leaderboards lb = new Leaderboards();
                 lb.Show();
                 this.Close();
             }
         }
-        #endregion
-
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             int userAns = 0;
@@ -230,11 +231,10 @@ namespace PrelimsInteg
                 _score += _points;
                 _round++;
                 MessageBox.Show("Correct!");
-                tbConvNum.Text = _rnd.Next(0, GetNumberRange()).ToString();
+                tbConvNum.Text = _rnd.Next(1, GetNumberRange()).ToString();
                 lbScore.Content = _score;
                 lbRoundCount.Content = _round;
-                _cummulTime += (int)lbTimer.Content;
-                Reset();
+                ResetTbBtn();
                 ResetTimer();
             }
             else
@@ -248,34 +248,15 @@ namespace PrelimsInteg
             }
         }
 
+        #region Resetters
         private void ResetTimer()
         {
             _dt.Stop();
-            _currentTime = _currentTime * 0.66;
-            lbTimer.Content = (int)_currentTime;
-            _cummulTime = 0; 
+            _gameTime = _gameTime * 0.66;
+            lbTimer.Content = (int)_gameTime;
             _dt.Start();
         }
-        #region Menu Items
-        private void MainMenu_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu mainMenu = new MainMenu();
-            mainMenu.Show();
-            this.Close();
-        }
-
-        private void Restart_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow main = new MainWindow(_difficulty, _name, _cummulTime);
-            main.Show();
-            this.Close();
-        }
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        #endregion
-        private void Reset()
+        private void ResetTbBtn()
         {
             tbBin128.Text = "0";
             tbBin64.Text = "0";
@@ -294,9 +275,28 @@ namespace PrelimsInteg
             btn4.Background = Brushes.Red;
             btn2.Background = Brushes.Red;
             btn1.Background = Brushes.Red;
+        } 
+        #endregion
+        #region Menu Items
+        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
+            this.Close();
         }
 
-        #region Difficulty Events
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow(_difficulty, _name, _gameTime);
+            main.Show();
+            this.Close();
+        }
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+        #region Difficulty Settings 
         private TimeSpan GetDifficultyInterval()
         {
             switch (_difficulty)

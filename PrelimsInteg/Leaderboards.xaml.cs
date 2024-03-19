@@ -12,9 +12,9 @@ namespace PrelimsInteg
         private List<string[]> _Leaderboards_Easy = new List<string[]>();
         private List<string[]> _Leaderboards_Medium = new List<string[]>();
         private List<string[]> _Leaderboards_Hard = new List<string[]>();
-        private string path1 = "EasyLeaderboards.txt";
-        private string path2 = "MediumLeaderboards.txt";
-        private string path3 = "HardLeaderboards.txt";
+        private string path1 = "EasyLeaderboards.csv";
+        private string path2 = "MediumLeaderboards.csv";
+        private string path3 = "HardLeaderboards.csv";
         private int _difficulty;
         private string _name;
         private int _score;
@@ -79,97 +79,15 @@ namespace PrelimsInteg
 
         private void WriteLeaderboards()
         {
-            List<string[]> leaderboards;
-            switch (_difficulty)
-            {
+           switch(_difficulty)
+           {
                 case 1:
-                    leaderboards = _Leaderboards_Easy;
-                    leaderboards.Add(new string[] { _name, _score.ToString(), _cummulTime.ToString() });
-
-                    for (int i = 0; i < leaderboards.Count - 1; i++)
-                    {
-                        for (int j = 0; j < leaderboards.Count - 1 - i; j++)
-                        {
-                            int jScore = int.Parse(leaderboards[j][1]);
-                            int jp1Score = int.Parse(leaderboards[j + 1][1]);
-
-                            if (jScore < jp1Score)
-                            {
-                                string[] temp = leaderboards[j];
-                                leaderboards[j] = leaderboards[j + 1];
-                                leaderboards[j + 1] = temp;
-                            }
-                        }
-                    }
-
-                    leaderboards.Insert(0, new string[] { _name, _score.ToString(), _cummulTime.ToString() });
-
-                    if (leaderboards.Count > 10)
-                    {
-                        leaderboards.RemoveAt(10);
-                    }
-
-                    WriteFile(path1, _Leaderboards_Easy);
                     break;
                 case 2:
-                    leaderboards = _Leaderboards_Medium;
-                    leaderboards.Add(new string[] { _name, _score.ToString(), _cummulTime.ToString() });
-
-                    for (int i = 0; i < leaderboards.Count - 1; i++)
-                    {
-                        for (int j = 0; j < leaderboards.Count - 1 - i; j++)
-                        {
-                            int jScore = int.Parse(leaderboards[j][1]);
-                            int jp1Score = int.Parse(leaderboards[j + 1][1]);
-
-                            if (jScore < jp1Score)
-                            {
-                                string[] temp = leaderboards[j];
-                                leaderboards[j] = leaderboards[j + 1];
-                                leaderboards[j + 1] = temp;
-                            }
-                        }
-                    }
-
-                    leaderboards.Insert(0, new string[] { _name, _score.ToString(), _cummulTime.ToString() });
-
-                    if (leaderboards.Count > 10)
-                    {
-                        leaderboards.RemoveAt(10);
-                    }
-                    WriteFile(path2, _Leaderboards_Medium);
                     break;
-                case 3: 
-                    leaderboards = _Leaderboards_Hard;
-                    leaderboards.Add(new string[] { _name, _score.ToString(), _cummulTime.ToString() });
-
-                    for (int i = 0; i < leaderboards.Count - 1; i++)
-                    {
-                        for (int j = 0; j < leaderboards.Count - 1 - i; j++)
-                        {
-                            int jScore = int.Parse(leaderboards[j][1]);
-                            int jp1Score = int.Parse(leaderboards[j + 1][1]);
-
-                            if (jScore < jp1Score)
-                            {
-                                string[] temp = leaderboards[j];
-                                leaderboards[j] = leaderboards[j + 1];
-                                leaderboards[j + 1] = temp;
-                            }
-                        }
-                    }
-
-                    leaderboards.Insert(0, new string[] { _name, _score.ToString(), _cummulTime.ToString() });
-
-                    if (leaderboards.Count > 10)
-                    {
-                        leaderboards.RemoveAt(10);
-                    }
-                    WriteFile(path3, _Leaderboards_Hard);
+                case 3:
                     break;
-                default:
-                    break;
-            }
+           }
         }
 
         private void WriteFile(string path, List<string[]> leaderboards)
@@ -179,6 +97,20 @@ namespace PrelimsInteg
                 for (int i = 0; i < leaderboards.Count; i++)
                 {
                     sw.WriteLine(string.Join(",", leaderboards[i]));
+                }
+            }
+        }
+
+        private void Sort(List<int[]> Leaderboard)
+        {
+            for (int i = 0; i < Leaderboard.Count - 1; i++)
+            {
+                for (int j = 0; i < Leaderboard[i].Length - 1 - i; j++)
+                {
+                    if (i < j)
+                    {
+                        
+                    }
                 }
             }
         }
