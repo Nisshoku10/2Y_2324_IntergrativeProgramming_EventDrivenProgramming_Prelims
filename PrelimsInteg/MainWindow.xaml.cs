@@ -187,7 +187,6 @@ namespace PrelimsInteg
         }
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            _dt.Stop();
             int userAns = 0;
             if (tbBin1.Text == "1")
             {
@@ -223,12 +222,13 @@ namespace PrelimsInteg
             }
             if (userAns == int.Parse(tbConvNum.Text))
             {
+                _dt.Stop();
                 _score += _points;
                 _round++;
-                MessageBox.Show("Correct!");
                 tbConvNum.Text = _rnd.Next(1, GetNumberRange()).ToString();
                 lbScore.Content = _score;
                 lbRoundCount.Content = _round;
+                MessageBox.Show("Correct!");
                 ResetTbBtn();
                 ResetTimer();
             }
@@ -246,7 +246,6 @@ namespace PrelimsInteg
         #region Resetters
         private void ResetTimer()
         {
-            _dt.Stop();
             _gameTime = _gameTime * 0.66;
             lbTimer.Content = (int)_gameTime;
             _dt.Start();

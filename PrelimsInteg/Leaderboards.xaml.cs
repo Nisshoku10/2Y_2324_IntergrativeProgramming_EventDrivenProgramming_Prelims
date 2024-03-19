@@ -49,11 +49,28 @@ namespace PrelimsInteg
 
             addNewEntry();
 
-            lbDiff.Content = "Easy";
-            lvEasy.Visibility = Visibility.Visible;
-            lvMedium.Visibility = Visibility.Hidden;
-            lvHard.Visibility = Visibility.Hidden;
-
+            switch (difficulty)
+            {
+                case 1:
+                    lbDiff.Content = "Easy";
+                    lvEasy.Visibility = Visibility.Visible;
+                    lvMedium.Visibility = Visibility.Hidden;
+                    lvHard.Visibility = Visibility.Hidden;
+                    break;
+                case 2:
+                    lbDiff.Content = "Medium";
+                    lvEasy.Visibility = Visibility.Hidden;
+                    lvMedium.Visibility = Visibility.Visible;
+                    lvHard.Visibility = Visibility.Hidden;
+                    break;
+                case 3:
+                    lbDiff.Content = "Hard";
+                    lvEasy.Visibility = Visibility.Hidden;
+                    lvMedium.Visibility = Visibility.Hidden;
+                    lvHard.Visibility = Visibility.Visible;
+                    break;
+            }
+            
             cbSort.Items.Add("Score");
             cbSort.Items.Add("Time");
         }
@@ -315,8 +332,8 @@ namespace PrelimsInteg
                     break;
                 case 2:
                     _MediumEntry.Add(new LeaderboardEntry { Nickname = _name, Score = _score, Time = _finalTime });
-                    _MediumEntry = SortLeaderboardScore(_EasyEntry);
-                    lvMedium.ItemsSource = _EasyEntry;
+                    _MediumEntry = SortLeaderboardScore(_MediumEntry);
+                    lvMedium.ItemsSource = _MediumEntry;
                     if (_MediumEntry.Count > 10)
                     {
                         _MediumEntry.RemoveAt(10);
@@ -324,8 +341,8 @@ namespace PrelimsInteg
                     break;
                 case 3:
                     _HardEntry.Add(new LeaderboardEntry { Nickname = _name, Score = _score, Time = _finalTime });
-                    _HardEntry = SortLeaderboardScore(_EasyEntry);
-                    lvHard.ItemsSource = _EasyEntry;
+                    _HardEntry = SortLeaderboardScore(_HardEntry);
+                    lvHard.ItemsSource = _HardEntry;
                     if(_HardEntry.Count > 10)
                     {
                         _HardEntry.RemoveAt(10);
