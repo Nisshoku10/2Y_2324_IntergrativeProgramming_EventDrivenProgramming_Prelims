@@ -12,16 +12,17 @@
         WindowStyle="None">
     <Grid>
         <Image Source="Assets\Background.png" Stretch="UniformToFill"/>
-        <StackPanel>
-            <TextBox Text="About Us" FontSize="40" Background="LightGray"
+        <Border BorderBrush="Black" BorderThickness="10">
+            <StackPanel>
+                <Label Content="About Us" FontSize="40" Background="LightGray"
                  Width="200"
                  VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center"
                  FontWeight="Bold"
+                 BorderBrush="Black"
                  BorderThickness="5"
-                 Margin="0, 60, 0, 0"
-                 IsReadOnly="True"/>
-            <TextBox Text="Welcome to Bit Smasher! &#x0a;
+                 Margin="0, 35, 0, 0"/>
+                 <TextBox Text="Welcome to Bit Smasher! &#x0a;
                  &#x0a;This game is all about knowing who will be the best of the best of the smashers out there. So folks, here are the mechanics for the game:
                  &#x0a;
                  &#x0a;1. There are three difficulties: Easy, Medium, Hard. Each will have a different time at faster time interval.
@@ -35,11 +36,12 @@
                  BorderBrush="Black" BorderThickness="3"
                  Height="320" Width="400"
                  FontSize="14" IsReadOnly="True"/>
-            <Button x:Name="btnBack" Content="Back to Main Menu"
+                <Button x:Name="btnBack" Content="Back to Main Menu"
                 FontSize="20" FontWeight="Bold"
                 Background="LightGray"
                 Width="200"
-                Margin="0,20,0,0" Click="btnBack_Click"/>
-        </StackPanel>
+                Margin="0,20,0,0" Click="btnBack_Click"/>   
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
