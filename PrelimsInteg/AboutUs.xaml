@@ -21,15 +21,15 @@
                  BorderThickness="5"
                  Margin="0, 60, 0, 0"
                  IsReadOnly="True"/>
-            <TextBox Text="Welcome to Bit Smasher! 
+            <TextBox Text="Welcome to Bit Smasher! &#x0a;
                  &#x0a;This game is all about knowing who will be the best of the best of the smashers out there. So folks, here are the mechanics for the game:
                  &#x0a;
-                 &#x0a;1. There are three difficulties: Easy, Medium, Hard. Each will have a different time a faster time frame.
+                 &#x0a;1. There are three difficulties: Easy, Medium, Hard. Each will have a different time at faster time interval.
                  &#x0a;2. Each round will decrease your starting time so be aware of that!.
-                 &#x0a;3. Each round, you will be shown a random decimal number between 0 and 256 to convert to its binary form.
+                 &#x0a;3. Each difficuly has different number range to convert, so watch out!
                  &#x0a;4. When you got a wrong answer, you can still try again until the timer stops.
-                 &#x0a;5. Once the timer is up, you'll be asked for your name.
-                 &#x0a;6. Now, check your name across the top 10 of the best players."
+                 &#x0a;5. Once the timer is up, check out if your name is at the leaderboards.
+                 &#x0a;&#x0a;Developed by: John Joshua Delfin - 2024"
                  Margin="0, 30, 0, 0"
                  TextWrapping="Wrap"
                  BorderBrush="Black" BorderThickness="3"
