@@ -316,7 +316,6 @@ namespace PrelimsInteg
             }
         }
         #endregion
-        int x = 0;
         private void addNewEntry()
         {
 
