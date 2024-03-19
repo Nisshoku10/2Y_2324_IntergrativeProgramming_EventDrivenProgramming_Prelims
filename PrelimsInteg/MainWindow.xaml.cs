@@ -27,15 +27,19 @@ namespace PrelimsInteg
             _name = name;
             _difficulty = difficulty;
             _gameTime = time;
+            _points = PointSystem();
+
             InitializeComponent();
+
             _dt = new DispatcherTimer();
             _dt.Tick += _dt_Tick;
             _dt.Interval = GetDifficultyInterval();
             _dt.Start();
+
             tbConvNum.Text = _rnd.Next(1, GetNumberRange()).ToString();
             lbRoundCount.Content = _round;
             lbTimer.Content = _gameTime;
-            _points = PointSystem();
+
         }
 
         #region Button Events
@@ -183,6 +187,7 @@ namespace PrelimsInteg
         }
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
+            _dt.Stop();
             int userAns = 0;
             if (tbBin1.Text == "1")
             {
@@ -277,7 +282,8 @@ namespace PrelimsInteg
 
         private void Restart_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow(_difficulty, _name, _gameTime);
+            
+            MainWindow main = new MainWindow(_difficulty, _name, gameTime());
             main.Show();
             this.Close();
         }
@@ -330,6 +336,21 @@ namespace PrelimsInteg
                     return 1;
             }
         } 
+
+        private double gameTime()
+        {
+            switch (_difficulty)
+            {
+                case 1:
+                    return 90;
+                case 2:
+                    return 60;
+                case 3:
+                    return 30;
+                default:
+                    return 90;
+            }
+        }
         #endregion
     }
 }

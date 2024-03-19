@@ -85,6 +85,7 @@
     <Compile Include="DifficultySection.xaml.cs">
       <DependentUpon>DifficultySection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LeaderboardEntry.cs" />
     <Compile Include="Leaderboards.xaml.cs">
       <DependentUpon>Leaderboards.xaml</DependentUpon>
     </Compile>

@@ -14,7 +14,12 @@
     <Grid>
         <Image Source="Assets\Leaderboards.png" Stretch="UniformToFill"/>
         <Border BorderBrush="Black" BorderThickness="10"/>
-        <Label Content="Leaderboards" 
+        <ComboBox x:Name="cbSort" Height="25" Width="200" 
+                  HorizontalAlignment="Center" VerticalAlignment="Top"
+                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged"
+                  Margin="0, 120, 0, 0"
+                  FontSize="15"/>
+        <Label x:Name="lbDiff" Content="Easy" 
                FontSize="40" FontWeight="Bold"
                Foreground="Black" Background="White"
                Width="300" Height="70"
@@ -23,35 +28,92 @@
                HorizontalContentAlignment="Center"
                Margin="0, 30, 0, 0"
                BorderBrush="Black" BorderThickness="5"/>
-        <ListView x:Name="lvEasy" Width="400" Height="300" IsEnabled="False" Margin="0, 125, 0, 0" 
-                  HorizontalAlignment="Center" VerticalAlignment="Top" 
-                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                  FontSize="17" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListView x:Name="lvEasy" Width="400" Height="300" Margin="0, 160, 0, 0" 
+                  HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                  FontSize="17" ItemsSource="{Binding}">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name"/>
-                    <GridViewColumn Header="Score"/>
-                    <GridViewColumn Header="Time(in secs)"/>
+                    <GridViewColumn Width="133"
+                                    Header="Name"
+                                    DisplayMemberBinding="{Binding Nickname}"/>
+                    <GridViewColumn Width="133"
+                                    Header="Score"
+                                    DisplayMemberBinding="{Binding Score}"/>
+                    <GridViewColumn Width="133"
+                                    Header="Time(secs)"
+                                    DisplayMemberBinding="{Binding Time}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-       
+        <ListView x:Name="lvMedium" Width="400" Height="300" Margin="0, 160, 0, 0" 
+          HorizontalAlignment="Center" VerticalAlignment="Top" 
+          FontSize="17" ItemsSource="{Binding}">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="133"
+                            Header="Name"
+                            DisplayMemberBinding="{Binding Nickname}"/>
+                    <GridViewColumn Width="133"
+                            Header="Score"
+                            DisplayMemberBinding="{Binding Score}"/>
+                    <GridViewColumn Width="133"
+                            Header="Time(secs)"
+                            DisplayMemberBinding="{Binding Time}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="lvHard" Width="400" Height="300" Margin="0, 160, 0, 0" 
+          HorizontalAlignment="Center" VerticalAlignment="Top" 
+          FontSize="17" ItemsSource="{Binding}">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="133"
+                            Header="Name"
+                            DisplayMemberBinding="{Binding Nickname}"/>
+                    <GridViewColumn Width="133"
+                            Header="Score"
+                            DisplayMemberBinding="{Binding Score}"/>
+                    <GridViewColumn Width="133"
+                            Header="Time(secs)"
+                            DisplayMemberBinding="{Binding Time}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"
-                    Margin="0, 0, 0, 50">
-            <Button Content="←" Height="40" Width="40" 
+                    Margin="0, 0, 0, 30">
+            <Button x:Name="btnLeft" Content="←" Height="40" Width="40" 
                     FontSize="30"
                     Background="White" Foreground="Black"
-                    BorderBrush="Black" BorderThickness="2" Click="Button_Click"
+                    BorderBrush="Black" BorderThickness="2" Click="btnLeft_Click"
                     Margin="100, 0, 40, 0"/>
             <Button Content="Go Back" Height="40" Width="100"
                     Background="White" Foreground="Black"
                     FontSize="20" FontWeight="Bold"
-                    BorderBrush="Black" BorderThickness="2" Click="Button_Click"
+                    BorderBrush="Black" BorderThickness="2" Click="btnBack_Click"
                     Margin="40, 0, 40, 0"/>
-            <Button Content="→" Height="40" Width="40" 
+            <Button x:Name="btnRight" Content="→" Height="40" Width="40" 
                     FontSize="30"
                     Background="White" Foreground="Black"
-                    BorderBrush="Black" BorderThickness="2" Click="Button_Click"
+                    BorderBrush="Black" BorderThickness="2" Click="btnRight_Click"
                     Margin="40, 0, 40, 0"/>
         </StackPanel>
     </Grid>
