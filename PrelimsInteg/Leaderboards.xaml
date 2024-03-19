@@ -9,8 +9,7 @@
         ResizeMode="NoResize"
         FontFamily="Consolas"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        Closing="Window_Closing">
+        WindowStyle="None">
     <Grid>
         <Image Source="Assets\Leaderboards.png" Stretch="UniformToFill"/>
         <Border BorderBrush="Black" BorderThickness="10"/>
@@ -112,8 +111,8 @@
                     FontSize="30"
                     Background="White" Foreground="Black"
                     BorderBrush="Black" BorderThickness="2" Click="btnLeft_Click"
-                    Margin="100, 0, 40, 0"/>
-            <Button Content="Go Back" Height="40" Width="100"
+                    Margin="95, 0, 40, 0"/>
+            <Button Content="Main Menu" Height="40" Width="120"
                     Background="White" Foreground="Black"
                     FontSize="20" FontWeight="Bold"
                     BorderBrush="Black" BorderThickness="2" Click="btnBack_Click"
