@@ -23,16 +23,18 @@ namespace PrelimsInteg
         private int _score = 0;
         private int _finalTime = 0;
         private int _difficulty = 0;
+
+        #region Constructor Overloads   
         public Leaderboards()
         {
             InitializeComponent();
             ReadLeaderboards();
+
             lbDiff.Content = "Easy";
             lvEasy.Visibility = Visibility.Visible;
             lvMedium.Visibility = Visibility.Hidden;
             lvHard.Visibility = Visibility.Hidden;
 
-            
             cbSort.Items.Add("Score");
             cbSort.Items.Add("Time");
         }
@@ -44,9 +46,19 @@ namespace PrelimsInteg
             _score = score;
             _finalTime = finalTime;
             _difficulty = difficulty;
+
+            addNewEntry();
+
             lbDiff.Content = "Easy";
+            lvEasy.Visibility = Visibility.Visible;
+            lvMedium.Visibility = Visibility.Hidden;
+            lvHard.Visibility = Visibility.Hidden;
+
+            cbSort.Items.Add("Score");
+            cbSort.Items.Add("Time");
         }
 
+        #endregion
         #region Read File
         private void ReadLeaderboards()
         {
@@ -182,12 +194,6 @@ namespace PrelimsInteg
             }
         } 
         #endregion
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            //WriteLeaderboards();
-        }
-
         #region Combo Box Sort By 
         private List<LeaderboardEntry> SortLeaderboardScore(List<LeaderboardEntry> templeaderboards)
         {
@@ -197,8 +203,7 @@ namespace PrelimsInteg
         private List<LeaderboardEntry> SortLeaderboardTime(List<LeaderboardEntry> templeaderboards)
         {
             return templeaderboards.OrderByDescending(lb => lb.Time).ToList();
-        } 
-        #endregion
+        }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -240,6 +245,62 @@ namespace PrelimsInteg
                 {
                     _HardEntry = SortLeaderboardTime(_HardEntry);
                     lvHard.ItemsSource = _HardEntry;
+                }
+            }
+        }
+        #endregion
+        private void addNewEntry()
+        {
+
+            switch (_difficulty)
+            {
+                case 1:
+                    _EasyEntry.Add(new LeaderboardEntry { Nickname = _name, Score = _score, Time = _finalTime });
+                    _EasyEntry = SortLeaderboardScore(_EasyEntry);
+                    lvEasy.ItemsSource = _EasyEntry;
+                    break;
+                case 2:
+                    _MediumEntry.Add(new LeaderboardEntry { Nickname = _name, Score = _score, Time = _finalTime });
+                    _MediumEntry = SortLeaderboardScore(_EasyEntry);
+                    lvMedium.ItemsSource = _EasyEntry;
+                    break;
+                case 3:
+                    _HardEntry.Add(new LeaderboardEntry { Nickname = _name, Score = _score, Time = _finalTime });
+                    _HardEntry = SortLeaderboardScore(_EasyEntry);
+                    lvHard.ItemsSource = _EasyEntry;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            WriteLeaderboards();
+        }
+
+        private void WriteLeaderboards()
+        {
+            using (StreamWriter sw = new StreamWriter(path1))
+            {
+                foreach (LeaderboardEntry lbe in _EasyEntry)
+                {
+                    sw.WriteLine($"{lbe.Nickname},{lbe.Score},{lbe.Time}");
+                }
+            }
+
+            using (StreamWriter sw = new StreamWriter(path2))
+            {
+                foreach (LeaderboardEntry lbe in _MediumEntry)
+                {
+                    sw.WriteLine($"{lbe.Nickname},{lbe.Score},{lbe.Time}");
+                }
+            }
+
+            using (StreamWriter sw = new StreamWriter(path3))
+            {
+                foreach (LeaderboardEntry lbe in _HardEntry)
+                {
+                    sw.WriteLine($"{lbe.Nickname},{lbe.Score},{lbe.Time}");
                 }
             }
         }
