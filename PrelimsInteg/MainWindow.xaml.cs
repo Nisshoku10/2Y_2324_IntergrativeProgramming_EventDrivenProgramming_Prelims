@@ -166,12 +166,7 @@ namespace PrelimsInteg
                 _dt.Stop();
                 _finalTime = (int)_elapsedTime;
                 MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total.");
-                LeaderboardEntry lbEnt = new LeaderboardEntry();
-                lbEnt.NickName = _name;
-                lbEnt.Score = _score;
-                lbEnt.Time = _finalTime;
-                lbEnt.Difficulty = _difficulty;
-                Leaderboards lb = new Leaderboards();
+                Leaderboards lb = new Leaderboards(_name, _score, _finalTime, _difficulty);
                 lb.Show();
                 this.Close();
             }
@@ -181,12 +176,7 @@ namespace PrelimsInteg
                 _dt.Stop();
                 _finalTime = (int)_elapsedTime;
                 MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total.");
-                LeaderboardEntry lbEnt = new LeaderboardEntry();
-                lbEnt.NickName = _name;
-                lbEnt.Score = _score; 
-                lbEnt.Time = _finalTime;
-                lbEnt.Difficulty = _difficulty;
-                Leaderboards lb = new Leaderboards();
+                Leaderboards lb = new Leaderboards(_name, _score, _finalTime, _difficulty);
                 lb.Show();
                 this.Close();
             }

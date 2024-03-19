@@ -1,6 +1,8 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,32 +51,48 @@ namespace PrelimsInteg
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string name = tbPlayerName.Text;
-            if (tbPlayerName.Text.Length >= 1 && tbPlayerName.Text.Length <= 10)
+            if (isNotNum(tbPlayerName.Text))
             {
-                _name = tbPlayerName.Text;
-                btnEasy.IsEnabled = true;
-                btnMedium.IsEnabled = true;
-                btnHard.IsEnabled = true;
-                lbWarning.Visibility = Visibility.Hidden;
-                lbNoName.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                if(tbPlayerName.Text.Length > 10)
+                if (tbPlayerName.Text.Length >= 1 && tbPlayerName.Text.Length <= 10)
                 {
-                    lbWarning.Visibility = Visibility.Visible;
-                    btnEasy.IsEnabled = false;
-                    btnMedium.IsEnabled = false;
-                    btnHard.IsEnabled = false;
+                    _name = tbPlayerName.Text;
+                    btnEasy.IsEnabled = true;
+                    btnMedium.IsEnabled = true;
+                    btnHard.IsEnabled = true;
+                    lbWarning.Visibility = Visibility.Hidden;
+                    lbNoName.Visibility = Visibility.Hidden;
                 }
                 else
                 {
-                    lbNoName.Visibility= Visibility.Visible;
-                    btnEasy.IsEnabled = false;
-                    btnMedium.IsEnabled = false;
-                    btnHard.IsEnabled = false;
+                    if (tbPlayerName.Text.Length > 10)
+                    {
+                        lbWarning.Visibility = Visibility.Visible;
+                        btnEasy.IsEnabled = false;
+                        btnMedium.IsEnabled = false;
+                        btnHard.IsEnabled = false;
+                    }
+                    else
+                    {
+                        lbNoName.Visibility = Visibility.Visible;
+                        btnEasy.IsEnabled = false;
+                        btnMedium.IsEnabled = false;
+                        btnHard.IsEnabled = false;
+                    }
                 }
+                lbIsNum.Visibility = Visibility.Hidden;
             }
+            else
+            {
+                lbIsNum.Visibility = Visibility.Visible;
+                btnEasy.IsEnabled = false;
+                btnMedium.IsEnabled = false;
+                btnHard.IsEnabled = false;
+            }
+        }
+
+        private bool isNotNum(string tbText)
+        {  
+            return !tbText.Any(char.IsNumber);
         }
     }
 }

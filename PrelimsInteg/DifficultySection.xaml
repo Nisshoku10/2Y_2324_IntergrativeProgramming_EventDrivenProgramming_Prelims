@@ -59,6 +59,15 @@
                BorderBrush="Black" BorderThickness="1"
                Margin="0, 0, 0, 100"
                Visibility="Hidden"/>
+        <Label x:Name="lbIsNum" Content="Must not contain numbers!"
+               Foreground="DarkRed" Background="White"
+               Height="26" Width="200"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               FontWeight="Bold"
+               BorderBrush="Black" BorderThickness="1"
+               Margin="0, 0, 0, 100"
+               Visibility="Hidden"/>
         <StackPanel VerticalAlignment="Bottom"
                     Margin="0, 0, 0, 60">
             <Button x:Name="btnEasy" Content="Easy"
