@@ -148,7 +148,7 @@ namespace PrelimsInteg
                     }
                     else
                     {
-                        _HardEntry = SortLeaderboardScore(_HardEntry);
+                        _HardEntry = SortLeaderboardTime(_HardEntry);
                         lvHard.ItemsSource = _HardEntry;
                     }
                 }
@@ -234,7 +234,7 @@ namespace PrelimsInteg
                     }
                     else
                     {
-                        _HardEntry = SortLeaderboardScore(_HardEntry);
+                        _HardEntry = SortLeaderboardTime(_HardEntry);
                         lvHard.ItemsSource = _HardEntry;
                     }
                 }

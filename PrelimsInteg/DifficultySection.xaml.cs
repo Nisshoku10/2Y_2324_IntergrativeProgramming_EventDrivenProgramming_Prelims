@@ -89,7 +89,12 @@ namespace PrelimsInteg
                 btnHard.IsEnabled = false;
             }
         }
-
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
+            this.Close();
+        }
         private bool isNotNum(string tbText)
         {  
             return !tbText.Any(char.IsNumber);

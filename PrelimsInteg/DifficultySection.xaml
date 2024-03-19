@@ -89,5 +89,12 @@
                     IsEnabled="False"
                     BorderBrush="Black" BorderThickness="2" Click="btnHard_Click"/>
         </StackPanel>
+        <Button x:Name="btnMainMenu" Content="Main Menu"
+            Width="120" Height="50"
+            FontSize="20"
+            VerticalAlignment="Bottom" HorizontalAlignment="Left"
+            Margin="20, 0, 0, 20"
+            FontWeight="Bold"
+            BorderBrush="Black" BorderThickness="2" Click="btnBack_Click"/>
     </Grid>
 </Window>
