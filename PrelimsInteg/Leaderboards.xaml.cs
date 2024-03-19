@@ -173,39 +173,36 @@ namespace PrelimsInteg
                 if (cbSort.SelectedIndex == 0)
                 {
                     SortLeaderboardScore(_EasyEntry);
-                    lvEasy.Items.Refresh();
                 }
-                else
+                else if (cbSort.SelectedIndex == 1)
                 {
                     SortLeaderboardTime(_EasyEntry);
-                    lvEasy.Items.Refresh();
                 }
+                lvEasy.ItemsSource = _EasyEntry;
             }
             else if (lbDiff.Content.ToString() == "Medium")
             {
                 if (cbSort.SelectedIndex == 0)
                 {
                     SortLeaderboardScore(_MediumEntry);
-                    lvMedium.Items.Refresh();
                 }
-                else
+                else if(cbSort.SelectedIndex == 1)
                 {
                     SortLeaderboardTime(_MediumEntry);
-                    lvMedium.Items.Refresh();
                 }
+                lvEasy.ItemsSource = _MediumEntry;
             }
             else if (lbDiff.Content.ToString() == "Hard")
             {
                 if (cbSort.SelectedIndex == 0)
                 {
                     SortLeaderboardScore(_HardEntry);
-                    lvHard.Items.Refresh();
                 }
-                else
+                else if (cbSort.SelectedIndex == 1)
                 {
                     SortLeaderboardTime(_HardEntry);
-                    lvHard.Items.Refresh();
                 }
+                lvEasy.ItemsSource = _HardEntry;
             }
         }
     }
