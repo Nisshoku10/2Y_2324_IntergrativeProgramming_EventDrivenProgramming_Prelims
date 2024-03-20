@@ -79,12 +79,12 @@ namespace PrelimsInteg
         #region Read File
         private void ReadLeaderboards()
         {
-            ReadFile(path1, _EasyEntry, 1);
-            ReadFile(path2, _MediumEntry, 2);
-            ReadFile(path3, _HardEntry, 3);
+            _EasyEntry = ReadFile(path1, _EasyEntry, 1);
+            _MediumEntry = ReadFile(path2, _MediumEntry, 2);
+            _HardEntry = ReadFile(path3, _HardEntry, 3);
         }
 
-        private void ReadFile(string path, List<LeaderboardEntry> leaderboards, int difficulty)
+        private List<LeaderboardEntry> ReadFile(string path, List<LeaderboardEntry> leaderboards, int difficulty)
         {
             if (File.Exists(path))
             {
@@ -116,15 +116,19 @@ namespace PrelimsInteg
             switch(difficulty)
             {
                 case 1:
+                    _EasyEntry = leaderboards;
                     lvEasy.ItemsSource = leaderboards;
                     break;
                 case 2:
+                    _MediumEntry = leaderboards;
                     lvMedium.ItemsSource = leaderboards;
                     break;
                 case 3:
+                    _HardEntry = leaderboards;
                     lvHard.ItemsSource = leaderboards;
                     break;
             }
+            return leaderboards;
         }
         #endregion
         #region Navigations 
