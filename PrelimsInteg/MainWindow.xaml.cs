@@ -36,7 +36,7 @@ namespace PrelimsInteg
             _dt.Interval = GetDifficultyInterval();
             _dt.Start();
 
-            lbConvNum.Content = _rnd.Next(1, GetNumberRange()).ToString();
+            lbConvNum.Content = _rnd.Next(1, 256).ToString();
             lbRoundCount.Content = _round;
             lbTimer.Content = _gameTime;
 
@@ -225,7 +225,7 @@ namespace PrelimsInteg
                 _dt.Stop();
                 _score += _points;
                 _round++;
-                lbConvNum.Content = _rnd.Next(1, GetNumberRange()).ToString();
+                lbConvNum.Content = _rnd.Next(1, 256).ToString();
                 lbScore.Content = _score;
                 lbRoundCount.Content = _round;
                 MessageBox.Show("Correct!");
@@ -246,7 +246,7 @@ namespace PrelimsInteg
         #region Resetters
         private void ResetTimer()
         {
-            _gameTime = _gameTime * 0.66;
+            _gameTime = _gameTime * 0.066;
             lbTimer.Content = (int)_gameTime;
             _dt.Start();
         }
@@ -306,21 +306,6 @@ namespace PrelimsInteg
                     return new TimeSpan(0, 0, 0, 1, 250);
             }
         }
-        private int GetNumberRange()
-        {
-            switch (_difficulty)
-            {
-                case 1:
-                    return 85;
-                case 2:
-                    return 170;
-                case 3:
-                    return 255;
-                default:
-                    return 75;
-            }
-        }
-
         private int PointSystem()
         {
             switch (_difficulty)
