@@ -39,13 +39,14 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    Margin="0, 40, 0, 10"
                    Background="White" BorderBrush="Black" BorderThickness="2"/>
-                <TextBox x:Name="tbConvNum" Text="1" IsReadOnly="True" 
+                <Label x:Name="lbConvNum" Content="1"  
                      Height="50" Width="300" 
-                     BorderThickness="5"
+                     BorderThickness="5" BorderBrush="Black"
                      Margin="0, 10, 0, 20"
                      FontSize="30"
                      HorizontalContentAlignment="Center"
-                     VerticalContentAlignment="Center"/>
+                     VerticalContentAlignment="Center"
+                     Background="White"/>
                 <StackPanel Orientation="Vertical" >
                     <Label x:Name="lbTimer" Content="90" FontSize="30" HorizontalContentAlignment="Center"
                        BorderThickness="5" BorderBrush="White"
@@ -87,40 +88,40 @@
                      Margin="0, 20, 0, 20"
                      IsReadOnly="True"/>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBox x:Name="tbBin128" Height="45" Width="45" Margin="10, 0, 10, 0"
+                    <Label x:Name="lbBin128" Height="45" Width="45" Margin="10, 0, 10, 0"
                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                         FontSize="25" Text="0"
-                         IsReadOnly="True"/>
-                    <TextBox x:Name="tbBin64" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         FontSize="25" Content="0"
+                         Background="White"/>
+                    <Label x:Name="lbBin64" Height="45" Width="45" Margin="10, 0, 10, 0"
                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                         FontSize="25" Text="0"
-                         IsReadOnly="True"/>
-                    <TextBox x:Name="tbBin32" Height="45" Width="45" Margin="10, 0, 10, 0" 
+                         FontSize="25" Content="0"
+                         Background="White"/>
+                    <Label x:Name="lbBin32" Height="45" Width="45" Margin="10, 0, 10, 0" 
                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                         FontSize="25" Text="0"
-                         IsReadOnly="True"/>
-                    <TextBox x:Name="tbBin16" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         FontSize="25" Content="0"
+                         Background="White"/>
+                    <Label x:Name="lbBin16" Height="45" Width="45" Margin="10, 0, 10, 0"
                          VerticalContentAlignment="Center" 
                          HorizontalContentAlignment="Center"
-                         FontSize="25" Text="0"
-                         IsReadOnly="True"/>
-                    <TextBox x:Name="tbBin8" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         FontSize="25" Content="0"
+                         Background="White"/>
+                    <Label x:Name="lbBin8" Height="45" Width="45" Margin="10, 0, 10, 0"
                          VerticalContentAlignment="Center" 
                          HorizontalContentAlignment="Center" 
-                         FontSize="25" Text="0"
-                         IsReadOnly="True"/>
-                    <TextBox x:Name="tbBin4" Height="45" Width="45" Margin="10, 0, 10, 0"
+                         FontSize="25" Content="0"
+                         Background="White"/>
+                    <Label x:Name="lbBin4" Height="45" Width="45" Margin="10, 0, 10, 0"
                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                         FontSize="25" Text="0"
-                         IsReadOnly="True"/>
-                    <TextBox x:Name="tbBin2" Height="45" Width="45" Margin="10, 0, 10, 0" 
+                         FontSize="25" Content="0"
+                         Background="White"/>
+                    <Label x:Name="lbBin2" Height="45" Width="45" Margin="10, 0, 10, 0" 
                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                         FontSize="25" Text="0"
-                         IsReadOnly="True"/>
-                    <TextBox x:Name="tbBin1" Height="45" Width="45" Margin="10, 0, 20, 0"
+                         FontSize="25" Content="0"
+                         Background="White"/>
+                    <Label x:Name="lbBin1" Height="45" Width="45" Margin="10, 0, 20, 0"
                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                         FontSize="25" Text="0"
-                         IsReadOnly="True"/>
+                         FontSize="25" Content="0"
+                         Background="White"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <Label Content="128" FontSize="20" Margin="20, 10, 0, 10"

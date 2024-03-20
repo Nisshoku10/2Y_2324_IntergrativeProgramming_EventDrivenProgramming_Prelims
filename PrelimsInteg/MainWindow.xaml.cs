@@ -36,7 +36,7 @@ namespace PrelimsInteg
             _dt.Interval = GetDifficultyInterval();
             _dt.Start();
 
-            tbConvNum.Text = _rnd.Next(1, GetNumberRange()).ToString();
+            lbConvNum.Content = _rnd.Next(1, GetNumberRange()).ToString();
             lbRoundCount.Content = _round;
             lbTimer.Content = _gameTime;
 
@@ -45,112 +45,112 @@ namespace PrelimsInteg
         #region Button Events
         private void btn128_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBin128.Text == "0")
+            if ((string)lbBin128.Content == "0")
             {
-                tbBin128.Text = "1";
+                lbBin128.Content = "1";
                 btn128.Background = Brushes.Green;
             }
             else
             {
-                tbBin128.Text = "0";
+                lbBin128.Content = "0";
                 btn128.Background = Brushes.Red;
             }
         }
 
         private void btn64_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBin64.Text == "0")
+            if ((string)lbBin64.Content == "0")
             {
-                tbBin64.Text = "1";
+                lbBin64.Content = "1";
                 btn64.Background = Brushes.Green;
             }
             else
             {
-                tbBin64.Text = "0";
+                lbBin64.Content = "0";
                 btn64.Background = Brushes.Red;
             }
         }
 
         private void btn32_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBin32.Text == "0")
+            if ((string)lbBin32.Content == "0")
             {
-                tbBin32.Text = "1";
+                lbBin32.Content = "1";
                 btn32.Background = Brushes.Green;
             }
             else
             {
-                tbBin32.Text = "0";
+                lbBin32.Content = "0";
                 btn32.Background = Brushes.Red;
             }
         }
 
         private void btn16_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBin16.Text == "0")
+            if ((string)lbBin16.Content == "0")
             {
-                tbBin16.Text = "1";
+                lbBin16.Content = "1";
                 btn16.Background = Brushes.Green;
             }
             else
             {
-                tbBin16.Text = "0";
+                lbBin16.Content = "0";
                 btn16.Background = Brushes.Red;
             }
         }
 
         private void btn8_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBin8.Text == "0")
+            if ((string)lbBin8.Content == "0")
             {
-                tbBin8.Text = "1";
+                lbBin8.Content = "1";
                 btn8.Background = Brushes.Green;
             }
             else
             {
-                tbBin8.Text = "0";
+                lbBin8.Content = "0";
                 btn8.Background = Brushes.Red;
             }
         }
 
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBin4.Text == "0")
+            if ((string)lbBin4.Content == "0")
             {
-                tbBin4.Text = "1";
+                lbBin4.Content = "1";
                 btn4.Background = Brushes.Green;
             }
             else
             {
-                tbBin4.Text = "0";
+                lbBin4.Content = "0";
                 btn4.Background = Brushes.Red;
             }
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBin2.Text == "0")
+            if ((string)lbBin2.Content == "0")
             {
-                tbBin2.Text = "1";
+                lbBin2.Content = "1";
                 btn2.Background = Brushes.Green;
             }
             else
             {
-                tbBin2.Text = "0";
+                lbBin2.Content = "0";
                 btn2.Background = Brushes.Red;
             }
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            if (tbBin1.Text == "0")
+            if ((string)lbBin1.Content == "0")
             {
-                tbBin1.Text = "1";
+                lbBin1.Content = "1";
                 btn1.Background = Brushes.Green;
             }
             else
             {
-                tbBin1.Text = "0";
+                lbBin1.Content = "0";
                 btn1.Background = Brushes.Red;
             }
         }
@@ -188,44 +188,44 @@ namespace PrelimsInteg
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             int userAns = 0;
-            if (tbBin1.Text == "1")
+            if ((string)lbBin1.Content == "1")
             {
                 userAns = userAns + 1;
             }
-            if (tbBin2.Text == "1")
+            if ((string)lbBin2.Content == "1")
             {
                 userAns = userAns + 2;
             }
-            if (tbBin4.Text == "1")
+            if ((string)lbBin4.Content == "1")
             {
                 userAns = userAns + 4;
             }
-            if (tbBin8.Text == "1")
+            if ((string)lbBin8.Content == "1")
             {
                 userAns = userAns + 8;
             }
-            if (tbBin16.Text == "1")
+            if ((string)lbBin16.Content == "1")
             {
                 userAns = userAns + 16;
             }
-            if (tbBin32.Text == "1")
+            if ((string)lbBin32.Content == "1")
             {
                 userAns = userAns + 32;
             }
-            if (tbBin64.Text == "1")
+            if ((string)lbBin64.Content == "1")
             {
                 userAns = userAns + 64;
             }
-            if (tbBin128.Text == "1")
+            if ((string)lbBin128.Content == "1")
             {
                 userAns = userAns + 128;
             }
-            if (userAns == int.Parse(tbConvNum.Text))
+            if (userAns == int.Parse((string)lbConvNum.Content))
             {
                 _dt.Stop();
                 _score += _points;
                 _round++;
-                tbConvNum.Text = _rnd.Next(1, GetNumberRange()).ToString();
+                lbConvNum.Content = _rnd.Next(1, GetNumberRange()).ToString();
                 lbScore.Content = _score;
                 lbRoundCount.Content = _round;
                 MessageBox.Show("Correct!");
@@ -252,14 +252,14 @@ namespace PrelimsInteg
         }
         private void ResetTbBtn()
         {
-            tbBin128.Text = "0";
-            tbBin64.Text = "0";
-            tbBin32.Text = "0";
-            tbBin16.Text = "0";
-            tbBin8.Text = "0";
-            tbBin4.Text = "0";
-            tbBin2.Text = "0";
-            tbBin1.Text = "0";
+            lbBin128.Content = "0";
+            lbBin64.Content = "0";
+            lbBin32.Content = "0";
+            lbBin16.Content = "0";
+            lbBin8.Content = "0";
+            lbBin4.Content = "0";
+            lbBin2.Content = "0";
+            lbBin1.Content = "0";
 
             btn128.Background = Brushes.Red;
             btn64.Background = Brushes.Red;
