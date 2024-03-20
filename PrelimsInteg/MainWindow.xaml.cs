@@ -246,7 +246,7 @@ namespace PrelimsInteg
         #region Resetters
         private void ResetTimer()
         {
-            _gameTime = _gameTime * 0.066;
+            _gameTime -= _gameTime * 0.066;
             lbTimer.Content = (int)_gameTime;
             _dt.Start();
         }
