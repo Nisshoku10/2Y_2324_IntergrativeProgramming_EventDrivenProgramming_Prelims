@@ -174,16 +174,6 @@ namespace PrelimsInteg
                 lb.Show();
                 this.Close();
             }
-
-            if (_round > 10)
-            {
-                _dt.Stop();
-                _finalTime = (int)_elapsedTime;
-                MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total in {_round} round(s).");
-                Leaderboards lb = new Leaderboards(_name, _score, _finalTime, _difficulty);
-                lb.Show();
-                this.Close();
-            }
         }
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -226,8 +216,17 @@ namespace PrelimsInteg
                 _score += _points;
                 _round++;
                 lbScore.Content = _score;
-                lbRoundCount.Content = _round;
                 MessageBox.Show("Correct!");
+                if(_round > 10)
+                {
+                    _dt.Stop();
+                    _finalTime = (int)_elapsedTime;
+                    MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total in {_round} round(s).");
+                    Leaderboards lb = new Leaderboards(_name, _score, _finalTime, _difficulty);
+                    lb.Show();
+                    this.Close();
+                }
+                lbRoundCount.Content = _round;
                 lbConvNum.Content = _rnd.Next(1, 256).ToString();
                 ResetTbBtn();
                 ResetTimer();
