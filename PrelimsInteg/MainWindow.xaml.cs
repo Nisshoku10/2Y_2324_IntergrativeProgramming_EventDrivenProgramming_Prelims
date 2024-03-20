@@ -169,7 +169,7 @@ namespace PrelimsInteg
             {
                 _dt.Stop();
                 _finalTime = (int)_elapsedTime;
-                MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total.");
+                MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total in {_round} round(s).");
                 Leaderboards lb = new Leaderboards(_name, _score, _finalTime, _difficulty);
                 lb.Show();
                 this.Close();
@@ -179,7 +179,7 @@ namespace PrelimsInteg
             {
                 _dt.Stop();
                 _finalTime = (int)_elapsedTime;
-                MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total.");
+                MessageBox.Show($"Game Over! Your total game time is {_finalTime} seconds. You also scored {_score} points in total in {_round} round(s).");
                 Leaderboards lb = new Leaderboards(_name, _score, _finalTime, _difficulty);
                 lb.Show();
                 this.Close();
