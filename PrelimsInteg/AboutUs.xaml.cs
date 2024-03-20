@@ -19,5 +19,6 @@ namespace PrelimsInteg
             mainMenu.Show();
             this.Close();
         }
+
     }
 }
