@@ -108,6 +108,10 @@ namespace PrelimsInteg
             }
 
             leaderboards = SortLeaderboardScore(leaderboards);
+            while (leaderboards.Count > 10) 
+            {
+                leaderboards.RemoveAt(leaderboards.Count - 1);
+            }
 
             switch(difficulty)
             {

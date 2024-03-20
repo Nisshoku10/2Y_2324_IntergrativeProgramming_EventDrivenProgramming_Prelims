@@ -175,7 +175,7 @@ namespace PrelimsInteg
                 this.Close();
             }
 
-            if (_round == 10)
+            if (_round > 10)
             {
                 _dt.Stop();
                 _finalTime = (int)_elapsedTime;
@@ -234,9 +234,14 @@ namespace PrelimsInteg
             }
             else
             {
-                if (_difficulty == 3)
+                switch (_difficulty)
                 {
-                    _score--;
+                    case 2:
+                        _score--;
+                        break;
+                    case 3:
+                        _score -= 2;
+                        break;
                 }
                 MessageBox.Show("Wrong! Try Again!");
                 lbScore.Content = _score;
