@@ -273,7 +273,7 @@ namespace PrelimsInteg
 
         private List<LeaderboardEntry> SortLeaderboardTime(List<LeaderboardEntry> templeaderboards)
         {
-            return templeaderboards.OrderByDescending(lb => lb.Time).ToList();
+            return templeaderboards.OrderBy(lb => lb.Time).ToList();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
