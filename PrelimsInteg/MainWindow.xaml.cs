@@ -225,10 +225,10 @@ namespace PrelimsInteg
                 _dt.Stop();
                 _score += _points;
                 _round++;
-                lbConvNum.Content = _rnd.Next(1, 256).ToString();
                 lbScore.Content = _score;
                 lbRoundCount.Content = _round;
                 MessageBox.Show("Correct!");
+                lbConvNum.Content = _rnd.Next(1, 256).ToString();
                 ResetTbBtn();
                 ResetTimer();
             }
