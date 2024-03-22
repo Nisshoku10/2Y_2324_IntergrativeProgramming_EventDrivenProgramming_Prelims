@@ -37,7 +37,8 @@
                BorderBrush="Black" BorderThickness="5"/>
         <ListView x:Name="lvEasy" Width="400" Height="300" Margin="0, 160, 0, 0" 
                   HorizontalAlignment="Stretch" VerticalAlignment="Top" 
-                  FontSize="17" ItemsSource="{Binding}">
+                  FontSize="19" ItemsSource="{Binding}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.Resources>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -60,7 +61,8 @@
         </ListView>
         <ListView x:Name="lvMedium" Width="400" Height="300" Margin="0, 160, 0, 0" 
           HorizontalAlignment="Center" VerticalAlignment="Top" 
-          FontSize="17" ItemsSource="{Binding}">
+          FontSize="19" ItemsSource="{Binding}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.Resources>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -83,7 +85,8 @@
         </ListView>
         <ListView x:Name="lvHard" Width="400" Height="300" Margin="0, 160, 0, 0" 
           HorizontalAlignment="Center" VerticalAlignment="Top" 
-          FontSize="17" ItemsSource="{Binding}">
+          FontSize="19" ItemsSource="{Binding}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.Resources>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
