@@ -332,29 +332,31 @@ namespace PrelimsInteg
                 case 1:
                     _EasyEntry.Add(new LeaderboardEntry { Nickname = _name, Score = _score, Time = _finalTime });
                     _EasyEntry = SortLeaderboardScore(_EasyEntry);
-                    lvEasy.ItemsSource = _EasyEntry;
                     while (_EasyEntry.Count > 10)
                     {
                         _EasyEntry.RemoveAt(_EasyEntry.Count - 1);
                     }
+                    
+                    lvEasy.ItemsSource = _EasyEntry;
+
                     break;
                 case 2:
                     _MediumEntry.Add(new LeaderboardEntry { Nickname = _name, Score = _score, Time = _finalTime });
                     _MediumEntry = SortLeaderboardScore(_MediumEntry);
-                    lvMedium.ItemsSource = _MediumEntry;
                     while (_MediumEntry.Count > 10)
                     {
                         _MediumEntry.RemoveAt(_MediumEntry.Count - 1);
                     }
+                    lvMedium.ItemsSource = _MediumEntry;
                     break;
                 case 3:
                     _HardEntry.Add(new LeaderboardEntry { Nickname = _name, Score = _score, Time = _finalTime });
                     _HardEntry = SortLeaderboardScore(_HardEntry);
-                    lvHard.ItemsSource = _HardEntry;
                     while (_HardEntry.Count > 10)
                     {
                         _HardEntry.RemoveAt(_HardEntry.Count - 1);
                     }
+                    lvHard.ItemsSource = _HardEntry;
                     break;
                 default:
                     break;
